@@ -1,0 +1,4 @@
+--theme="ansi"
+--style="numbers"
+--italic-text=always
+--map-syntax .ignore:.gitignore

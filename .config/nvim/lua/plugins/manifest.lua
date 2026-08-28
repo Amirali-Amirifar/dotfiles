@@ -1,0 +1,40 @@
+return {
+  'guess-indent',
+  'web-devicons',
+  'kanagawa',
+
+  'gitsigns',
+  'which-key',
+  'todo-comments',
+
+  'mini-ai',
+  'mini-surround',
+  'mini-starter',
+  'mini-statusline',
+  'mini-move',
+  'mini-bracketed',
+  'mini-bufremove',
+  'telescope',
+  'flash',
+  'trouble',
+  'quicker',
+
+  'fidget',
+  'symbol-usage',
+  'treesitter',
+  'treesitter-textobjects',
+  'conform',
+  'luasnip',
+  'blink-cmp',
+  'vimtex',
+
+  'autopairs',
+  'indent-blankline',
+  'lint',
+
+  'neo-tree',
+  'diffview',
+  'grug-far',
+  'neotest',
+  'coverage',
+}

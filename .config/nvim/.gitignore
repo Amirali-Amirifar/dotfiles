@@ -1,0 +1,4 @@
+.luarc.json
+.mypy_cache/
+spell/
+tags

@@ -1,0 +1,9 @@
+--smart-case
+
+--hidden
+--glob=!.git/
+
+--max-columns=200
+--max-columns-preview
+
+--heading

@@ -1,0 +1,11 @@
+.DS_Store
+*.log
+*.orig
+*.bak
+
+.config/git/local
+.config/zsh/local.zsh
+.config/zsh/local.zshrc
+
+.config/zsh/.zsh_history
+nvim.log

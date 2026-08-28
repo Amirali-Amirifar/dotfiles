@@ -1,0 +1,114 @@
+[core]
+  editor = nvim
+
+[color]
+  ui = auto
+
+[color "status"]
+  added        = "#98bb6c" bold
+  changed      = "#ffa066"
+  untracked    = "#727169"
+  unmerged     = "#e82424" bold
+  branch       = "#7aa89f" bold
+  localBranch  = "#98bb6c" bold
+  remoteBranch = "#ff5d62"
+
+[color "branch"]
+  current  = "#98bb6c" bold
+  local    = "#7aa89f"
+  remote   = "#ff5d62"
+  upstream = "#957fb8"
+  plain    = "#dcd7ba"
+
+[color "decorate"]
+  branch       = "#98bb6c" bold
+  remoteBranch = "#ff5d62"
+  tag          = "#ff9e3b" bold
+  stash        = "#7aa89f"
+  HEAD         = "#957fb8" bold
+  grafted      = "#ffa066"
+
+[color "diff"]
+  meta       = "#727169"
+  frag       = "#2d4f67" bold
+  func       = "#7aa89f"
+  old        = "#e82424"
+  new        = "#98bb6c"
+  context    = "#727169"
+  whitespace = "#e82424" reverse
+
+[color "grep"]
+  match      = "#ff9e3b" bold
+  filename   = "#7aa89f"
+  linenumber = "#98bb6c"
+
+[init]
+  defaultBranch = main
+
+[push]
+  autoSetupRemote = true
+  default = simple
+
+[fetch]
+  prune = true
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
+
+[merge]
+  tool = nvimdiff
+  conflictstyle = zdiff3
+
+[mergetool]
+  prompt = false
+
+[mergetool "nvimdiff"]
+  cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c 'wincmd w' -c 'wincmd J'
+  trustExitCode = true
+
+[diff]
+  tool = nvimdiff
+
+[difftool "nvimdiff"]
+  cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[delta]
+  navigate = true
+  dark = true
+  side-by-side = true
+  line-numbers = true
+  syntax-theme = ansi
+  minus-style                    = syntax "#43242b"
+  minus-non-emph-style           = syntax "#43242b"
+  minus-emph-style               = bold "#ff5d62" "#43242b"
+  plus-style                     = syntax "#2b3328"
+  plus-non-emph-style            = syntax "#2b3328"
+  plus-emph-style                = bold "#98bb6c" "#2b3328"
+  zero-style                     = syntax
+  hunk-header-style              = file line-number syntax
+  hunk-header-decoration-style   = "#2d4f67" box
+  hunk-header-file-style         = bold "#7aa89f"
+  hunk-header-line-number-style  = bold "#ff9e3b"
+  file-style                     = bold "#7aa89f"
+  file-decoration-style          = "#2d4f67" ol
+  line-numbers-zero-style        = "#54546d"
+  line-numbers-left-style        = "#54546d"
+  line-numbers-right-style       = "#54546d"
+  line-numbers-minus-style       = "#e82424" "#43242b"
+  line-numbers-plus-style        = "#98bb6c" "#2b3328"
+
+[alias]
+  lg     = "log --pretty=format:'%C(#ffa066)%h%Creset%C(auto)%d%Creset %C(#dcd7ba)%s%Creset %C(#727169)(%cr)%Creset %C(#7aa89f)%an%Creset' --abbrev-commit --date=relative"
+  logg   = log --pretty=fuller
+  tree   = !git lg --graph
+  last   = log -1 HEAD
+  st     = status
+  unstage   = reset HEAD
+  uncommit  = reset --soft HEAD^
+  progress  = diff --stat
+
+[include]
+  path = local
