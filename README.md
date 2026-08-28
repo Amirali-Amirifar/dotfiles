@@ -15,8 +15,11 @@ cd ~/Projects/dotfiles
 make
 ```
 
-If a destination already contains a real file or directory, the Makefile stops
-and leaves it alone.
+Run a single target if you only want part of the setup, for example `make nvim`,
+`make zsh`, or `make tmux`.
+
+If a destination already contains a real file or directory, it is moved to the
+same path with `.bak` appended. The Makefile stops if that backup already exists.
 
 For Git identity and machine-specific shell settings:
 

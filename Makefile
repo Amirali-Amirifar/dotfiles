@@ -1,29 +1,33 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 ROOT := $(CURDIR)
-CONFIGS := nvim git kitty ripgrep bat fd zsh
+CONFIGS := nvim git kitty ripgrep bat fd
 
-.PHONY: install plugins update-plugins
+.PHONY: install $(CONFIGS) zsh tmux plugins update-plugins
 
-install: plugins
-	@mkdir -p "$(XDG_CONFIG_HOME)"
-	@for name in $(CONFIGS); do \
-		target="$(XDG_CONFIG_HOME)/$$name"; \
-		if [ -e "$$target" ] && [ ! -L "$$target" ]; then \
-			echo "refusing to replace $$target" >&2; \
+install: $(CONFIGS) zsh tmux
+
+define link
+	@mkdir -p "$(dir $(2))"
+	@if [ -e "$(2)" ] && [ ! -L "$(2)" ]; then \
+		if [ -e "$(2).bak" ] || [ -L "$(2).bak" ]; then \
+			echo "refusing to replace existing backup $(2).bak" >&2; \
 			exit 1; \
 		fi; \
-		ln -sfn "$(ROOT)/.config/$$name" "$$target"; \
-	done
-	@if [ -e "$(HOME)/.zshenv" ] && [ ! -L "$(HOME)/.zshenv" ]; then \
-		echo "refusing to replace $(HOME)/.zshenv" >&2; \
-		exit 1; \
+		mv "$(2)" "$(2).bak"; \
+		echo "backed up $(2) to $(2).bak"; \
 	fi
-	@ln -sfn "$(ROOT)/.config/zsh/.zshenv" "$(HOME)/.zshenv"
-	@if [ -e "$(HOME)/.tmux.conf" ] && [ ! -L "$(HOME)/.tmux.conf" ]; then \
-		echo "refusing to replace $(HOME)/.tmux.conf" >&2; \
-		exit 1; \
-	fi
-	@ln -sfn "$(ROOT)/.tmux.conf" "$(HOME)/.tmux.conf"
+	@ln -sfn "$(1)" "$(2)"
+endef
+
+$(CONFIGS):
+	$(call link,$(ROOT)/.config/$@,$(XDG_CONFIG_HOME)/$@)
+
+zsh: plugins
+	$(call link,$(ROOT)/.config/zsh,$(XDG_CONFIG_HOME)/zsh)
+	$(call link,$(ROOT)/.config/zsh/.zshenv,$(HOME)/.zshenv)
+
+tmux:
+	$(call link,$(ROOT)/.tmux.conf,$(HOME)/.tmux.conf)
 
 plugins:
 	@git submodule update --init --recursive
