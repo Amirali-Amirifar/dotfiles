@@ -38,6 +38,7 @@ return {
     }
 
     vim.treesitter.language.register('json', { 'jsonc', 'json5' })
+    vim.treesitter.language.register('markdown', 'mdx')
 
     local available_parsers = require('nvim-treesitter').get_available()
 

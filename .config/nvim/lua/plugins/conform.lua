@@ -40,6 +40,7 @@ return {
         jsonc = prettier,
         yaml = prettier,
         markdown = prettier,
+        mdx = prettier,
         html = prettier,
         css = prettier,
         scss = prettier,

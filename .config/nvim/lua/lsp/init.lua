@@ -9,6 +9,7 @@ local servers = {
   'bashls',
   'dockerls',
   'marksman',
+  'mdx_analyzer',
   'texlab',
   'jsonls',
   'yamlls',
