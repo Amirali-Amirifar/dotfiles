@@ -64,3 +64,6 @@ alias gmtl='git mergetool'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias gpf='git push --force-with-lease --force-if-includes'
+
+
+alias docker=podman
