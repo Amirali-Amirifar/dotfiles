@@ -1,10 +1,10 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 ROOT := $(CURDIR)
-CONFIGS := nvim git kitty ripgrep bat fd
+CONFIGS := nvim git kitty ripgrep bat fd tmux
 
-.PHONY: install $(CONFIGS) zsh tmux plugins update-plugins
+.PHONY: install $(CONFIGS) zsh plugins update-plugins
 
-install: $(CONFIGS) zsh tmux
+install: $(CONFIGS) zsh
 
 define link
 	@mkdir -p "$(dir $(2))"
@@ -25,9 +25,6 @@ $(CONFIGS):
 zsh: plugins
 	$(call link,$(ROOT)/.config/zsh,$(XDG_CONFIG_HOME)/zsh)
 	$(call link,$(ROOT)/.config/zsh/.zshenv,$(HOME)/.zshenv)
-
-tmux:
-	$(call link,$(ROOT)/.tmux.conf,$(HOME)/.tmux.conf)
 
 plugins:
 	@git submodule update --init --recursive
