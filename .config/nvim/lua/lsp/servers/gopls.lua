@@ -8,6 +8,7 @@ return {
       usePlaceholders = true,
       completeUnimported = true,
       directoryFilters = { '-.git', '-.vscode', '-.idea', '-node_modules' },
+      buildFlags = { '-tags=e2e,integration' },
       analyses = {
         nilness = true,
         unusedparams = true,
