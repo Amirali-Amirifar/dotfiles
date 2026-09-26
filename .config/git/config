@@ -71,6 +71,8 @@
 
 [diff]
   tool = nvimdiff
+  algorithm = histogram
+  colorMoved=zebra
 
 [difftool "nvimdiff"]
   cmd = nvim -d "$LOCAL" "$REMOTE"
@@ -110,5 +112,9 @@
   uncommit  = reset --soft HEAD^
   progress  = diff --stat
 
+[rerere]
+  enabled = true
+
 [include]
   path = local
+
