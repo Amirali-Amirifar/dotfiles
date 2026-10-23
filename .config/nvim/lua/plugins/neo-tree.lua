@@ -27,10 +27,6 @@ return {
           { source = 'document_symbols', display_name = '  Syms ' },
         },
       },
-      close_if_last_window = false,
-      enable_git_status = true,
-      enable_diagnostics = true,
-      enable_modified_markers = true,
       open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' },
       default_component_configs = {
         indent = {
@@ -68,7 +64,6 @@ return {
         symlink_target = { enabled = true },
       },
       window = {
-        position = 'left',
         width = 34,
         mapping_options = { noremap = true, nowait = true },
         mappings = {
@@ -134,7 +129,6 @@ return {
         group_empty_dirs = true,
         show_unloaded = true,
       },
-      git_status = {},
       document_symbols = {
         follow_cursor = true,
         client_filters = 'first',

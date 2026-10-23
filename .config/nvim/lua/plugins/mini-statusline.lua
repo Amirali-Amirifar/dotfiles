@@ -32,15 +32,6 @@ local function filename()
   return f .. '%m%r'
 end
 
-local function filetype()
-  local ft = vim.bo.filetype
-  if ft == '' then return '' end
-  return ft
-end
-
-local function position() return '%2l:%-2v' end
-local function percent() return ' %2p%%' end
-
 return {
   setup = function()
     local statusline = require 'mini.statusline'
@@ -53,10 +44,7 @@ return {
           local diag = diagnostics()
           local dir = cwd()
           local file = filename()
-          local ft = filetype()
           local lsp = lsp_clients()
-          local pos = position()
-          local pct = percent()
 
           return statusline.combine_groups {
             { hl = mode_hl, strings = { mode } },
@@ -65,12 +53,11 @@ return {
             { hl = 'MiniStatuslineDirectory', strings = { dir } },
             { hl = 'MiniStatuslineFilename', strings = { file } },
             '%=',
-            { hl = 'MiniStatuslineFileinfo', strings = { ft, lsp } },
-            { hl = mode_hl, strings = { pos } },
-            { hl = 'MiniStatuslineDevinfo', strings = { pct } },
+            { hl = 'MiniStatuslineFileinfo', strings = { vim.bo.filetype, lsp } },
+            { hl = mode_hl, strings = { '%2l:%-2v' } },
+            { hl = 'MiniStatuslineDevinfo', strings = { ' %2p%%' } },
           }
         end,
-        inactive = nil,
       },
     }
   end,

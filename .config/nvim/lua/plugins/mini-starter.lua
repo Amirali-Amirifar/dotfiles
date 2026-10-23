@@ -1,28 +1,11 @@
-local function header()
-  return table.concat({
-    '',
-    '  ╭──────────────────────────╮',
-    '  │     n v i m              │',
-    '  ╰──────────────────────────╯',
-    '',
-  }, '\n')
-end
-
-local function footer()
-  return table.concat({
-    '',
-    '  type `:q<CR>` to exit  ·  press `?` for help',
-  }, '\n')
-end
-
 return {
   setup = function()
     local starter = require 'mini.starter'
     starter.setup {
       autoopen = true,
       evaluate_single = false,
-      header = header,
-      footer = footer,
+      header = '\n  ╭──────────────────────────╮\n  │     n v i m              │\n  ╰──────────────────────────╯\n',
+      footer = '\n  type `:q<CR>` to exit  ·  press `?` for help',
       items = {
         starter.sections.builtin_actions(),
         starter.sections.recent_files(15, false),
