@@ -27,7 +27,4 @@ return {
 
   'neo-tree',
   'diffview',
-  'grug-far',
-  'neotest',
-  'coverage',
 }
