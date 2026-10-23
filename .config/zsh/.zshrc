@@ -117,8 +117,8 @@ if (( $+commands[fzf] )) && [[ -t 0 && -t 1 ]]; then
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --info=inline'
   export FZF_CTRL_R_OPTS='--exact'
 
-  if fzf --zsh </dev/null >/dev/null 2>&1; then
-    source <(fzf --zsh)
+  if _fzf_init=$(fzf --zsh </dev/null 2>/dev/null); then
+    source /dev/stdin <<< "$_fzf_init"
   else
     for _file in \
       /usr/share/doc/fzf/examples/key-bindings.zsh \
@@ -132,6 +132,7 @@ if (( $+commands[fzf] )) && [[ -t 0 && -t 1 ]]; then
     done
     unset _file
   fi
+  unset _fzf_init
 fi
 
 if [[ -n "$_bat_bin" ]]; then
