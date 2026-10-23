@@ -21,9 +21,6 @@ local mason = require 'lsp.mason'
 require('pack').add(mason.spec)
 mason.setup(servers)
 
-for _, name in ipairs(servers) do
-  vim.lsp.config(name, require('lsp.servers.' .. name))
-  vim.lsp.enable(name)
-end
+vim.lsp.enable(servers)
 
 require 'lsp.attach'
