@@ -2,8 +2,10 @@ vim.opt_local.expandtab = false
 vim.opt_local.tabstop = 4
 vim.opt_local.shiftwidth = 4
 
+local group = vim.api.nvim_create_augroup('go-organize-imports', { clear = false })
+vim.api.nvim_clear_autocmds { group = group, buffer = 0 }
 vim.api.nvim_create_autocmd('BufWritePre', {
-  group = vim.api.nvim_create_augroup('go-organize-imports', { clear = true }),
+  group = group,
   buffer = 0,
   callback = function()
     local params = vim.lsp.util.make_range_params()
