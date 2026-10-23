@@ -50,6 +50,8 @@ else
 fi
 unset _zcompdump
 
+(( $+commands[herdr] )) && source <(herdr completion zsh)
+
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose true

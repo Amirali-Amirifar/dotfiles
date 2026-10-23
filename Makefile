@@ -2,9 +2,9 @@ XDG_CONFIG_HOME ?= $(HOME)/.config
 ROOT := $(CURDIR)
 CONFIGS := nvim git kitty ripgrep bat fd tmux
 
-.PHONY: install $(CONFIGS) zsh plugins update-plugins
+.PHONY: install $(CONFIGS) herdr zsh plugins update-plugins
 
-install: $(CONFIGS) zsh
+install: $(CONFIGS) herdr zsh
 
 define link
 	@mkdir -p "$(dir $(2))"
@@ -21,6 +21,9 @@ endef
 
 $(CONFIGS):
 	$(call link,$(ROOT)/.config/$@,$(XDG_CONFIG_HOME)/$@)
+
+herdr:
+	$(call link,$(ROOT)/.config/herdr/config.toml,$(XDG_CONFIG_HOME)/herdr/config.toml)
 
 zsh: plugins
 	$(call link,$(ROOT)/.config/zsh,$(XDG_CONFIG_HOME)/zsh)
