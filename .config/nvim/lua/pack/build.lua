@@ -15,8 +15,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
     local name = data.spec.name
     if name == 'telescope-fzf-native.nvim' and vim.fn.executable 'make' == 1 then
       build(name, { 'make' }, data.path)
-    elseif name == 'LuaSnip' and vim.fn.has 'win32' ~= 1 and vim.fn.executable 'make' == 1 then
-      build(name, { 'make', 'install_jsregexp' }, data.path)
     elseif name == 'nvim-treesitter' then
       if not data.active then vim.cmd.packadd 'nvim-treesitter' end
       vim.cmd 'TSUpdate'

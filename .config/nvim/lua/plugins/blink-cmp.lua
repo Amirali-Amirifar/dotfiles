@@ -10,7 +10,6 @@ return {
       sources = {
         default = { 'lsp', 'path', 'snippets' },
       },
-      snippets = { preset = 'luasnip' },
       fuzzy = { implementation = 'lua' },
       signature = { enabled = true },
     }

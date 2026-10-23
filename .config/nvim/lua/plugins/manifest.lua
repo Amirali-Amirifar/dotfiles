@@ -24,7 +24,6 @@ return {
   'treesitter',
   'treesitter-textobjects',
   'conform',
-  'luasnip',
   'blink-cmp',
   'vimtex',
 
