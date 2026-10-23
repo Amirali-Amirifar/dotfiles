@@ -18,7 +18,7 @@ local servers = {
 }
 
 local mason = require 'lsp.mason'
-require('pack').add(mason.spec)
+vim.pack.add(mason.spec)
 mason.setup(servers)
 
 vim.lsp.enable(servers)

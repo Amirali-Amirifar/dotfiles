@@ -42,7 +42,6 @@ local function position() return '%2l:%-2v' end
 local function percent() return ' %2p%%' end
 
 return {
-  spec = { 'https://github.com/nvim-mini/mini.nvim' },
   setup = function()
     local statusline = require 'mini.statusline'
     statusline.setup {

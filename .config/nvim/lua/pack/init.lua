@@ -8,9 +8,6 @@ local M = {}
 ---@return string?
 local function source(spec) return type(spec) == 'string' and spec or spec.src end
 
----@param specs (string|vim.pack.Spec)[]
-function M.add(specs) vim.pack.add(specs) end
-
 ---@param names string[]
 function M.load_all(names)
   local modules, specs, seen = {}, {}, {}
@@ -29,7 +26,7 @@ function M.load_all(names)
     end
   end
 
-  M.add(specs)
+  vim.pack.add(specs)
   for _, plugin in ipairs(modules) do
     if plugin.setup then plugin.setup() end
   end

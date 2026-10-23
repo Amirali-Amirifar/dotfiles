@@ -16,7 +16,6 @@ local function footer()
 end
 
 return {
-  spec = { 'https://github.com/nvim-mini/mini.nvim' },
   setup = function()
     local starter = require 'mini.starter'
     starter.setup {
