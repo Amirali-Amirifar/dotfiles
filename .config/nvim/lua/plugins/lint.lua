@@ -13,7 +13,7 @@ return {
     }
     lint.linters.sqlfluff.args = { 'lint', '--format=json', '--dialect=postgres' }
 
-    vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+    vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost' }, {
       group = vim.api.nvim_create_augroup('lint', { clear = true }),
       callback = function()
         if vim.bo.modifiable then lint.try_lint() end
